@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apikeys on 쿨에스엠에스 API References</title>
+    <link>/apikeys/</link>
+    <description>Recent content in Apikeys on 쿨에스엠에스 API References</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko</language>
+    
+	<atom:link href="/apikeys/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>API Credentials</title>
+      <link>/apikeys/apikeys/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/apikeys/apikeys/</guid>
+      <description>API Key 관리 REST API 호출을 통해 API Key 생성, 삭제, Secret Key 재생성 등 관리 할 수 있습니다.
+API Key 생성 Resource URL POST https://solapi.com/credentials/createCredential
+Request Parameters 필수 입력 파라메터가 없습니다.
+ Request Syntax
+ {}   Request Sample
+ curl &amp;quot;https://solapi.com/credentials/createCredential&amp;quot; -H &amp;quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&amp;quot;  request( &amp;quot;https://solapi.com/credentials/createCredential&amp;quot;, headers: { &amp;quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&amp;quot; } )  import urllib.request url = &amp;#39;https://solapi.</description>
+    </item>
+    
+  </channel>
+</rss>

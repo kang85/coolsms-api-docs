@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cash-apis on 쿨에스엠에스 API References</title>
+    <link>/cash-api/</link>
+    <description>Recent content in Cash-apis on 쿨에스엠에스 API References</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko</language>
+    
+	<atom:link href="/cash-api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>잔액정보 가져오기</title>
+      <link>/cash-api/balance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/cash-api/balance/</guid>
+      <description>잔액정보 이 API는 Authentication Info를 제외한 Parameters가 필요 없습니다.
+유저의 잔액정보를 가져옵니다.
+Request Parameters 필수 입력 파라메터가 없습니다.
+Response Parameters { &amp;quot;data&amp;quot;: { &amp;quot;member_srl&amp;quot;: &amp;quot;382492&amp;quot;, &amp;quot;user_id&amp;quot;: &amp;quot;testsy1&amp;quot;, &amp;quot;cash&amp;quot;: &amp;quot;0&amp;quot;, &amp;quot;point&amp;quot;: &amp;quot;98843&amp;quot;, } }     Parameter Default Description     member_srl - 사용자 번호(AccountId와 동일)   user_id - 사용자 아이디   cash - 남은 캐쉬   point - 남은 포인트    Error 처리 { &amp;quot;errorMessage&amp;quot;: &amp;quot;parameter is empty&amp;quot; }  Http Status Code가 200일 경우 성공 아니라면 &amp;lsquo;errorMessage&amp;rsquo;값을 확인한다.</description>
+    </item>
+    
+  </channel>
+</rss>

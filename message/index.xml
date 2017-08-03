@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Messages on 쿨에스엠에스 API References</title>
+    <link>/message/</link>
+    <description>Recent content in Messages on 쿨에스엠에스 API References</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko</language>
+    
+	<atom:link href="/message/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>API Reference</title>
+      <link>/message/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/message/</guid>
+      <description>문자발송 쿨에스엠에스의 REST API Reference 내용을 담고 있습니다.
+참고
+REST는 Representational State Transfer의 약자로 API 연동 규격을 명확하게 정의되고 쉽게 구현 할 수 있습니다. https://ko.wikipedia.org/wiki/REST
+쿨에스엠에스 SMS REST API 서버로 Request를 보내기 위해서 인증을 거쳐야 합니다. authentication 를 참고하세요.
+Resource URL 구성 https://solapi.com/&amp;lt;ServiceName&amp;gt;/&amp;lt;Version&amp;gt;/[&amp;lt;ResourcePath&amp;gt;]/&amp;lt;Action&amp;gt;
+ServiceName
+- SimpleMessage/sendMessages - GroupMessage/index - ScheduledMessage/index - MessageLog/index
+Version
+- 서비스 버전
+ResourcePath
+- 필요시 특정 리소스 경로를 나타냅니다
+Action
+- 서비스 혹은 리소스의 액션을 나타냅니다</description>
+    </item>
+    
+  </channel>
+</rss>

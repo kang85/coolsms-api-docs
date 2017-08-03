@@ -1,0 +1,939 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="generator" content="Hugo 0.25.1" />
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>쿨에스엠에스 API References</title>
+    <link href='/slate/stylesheets/monokai.css' rel="stylesheet" media="screen" />
+<link href='/slate/stylesheets/screen.css' rel="stylesheet" media="screen" />
+<link href='/slate/stylesheets/print.css' rel="stylesheet" media="print" />
+
+    
+<script src='/slate/javascripts/all.js'></script>
+
+    
+</head>
+<body class="index" data-languages="[ &#34;bash&#34; ,  &#34;javascript&#34; ,  &#34;python&#34; ,  &#34;php&#34; ]">
+    <a href="#" id="nav-button">
+        <span>
+        NAV
+        <img src='/slate/images/navbar.png'/>
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        
+         <img src='/images/logo.png' />
+        
+        <div class="lang-selector">
+            
+            <a href="#" data-language-name="bash">CURL</a>
+            
+            <a href="#" data-language-name="javascript">Javascript</a>
+            
+            <a href="#" data-language-name="python">Python</a>
+            
+            <a href="#" data-language-name="php">PHP</a>
+            
+        </div>
+         
+        
+        <div class="search">
+            <input type="text" class="search" id="input-search" placeholder=''>
+        </div>
+        <ul class="search-results"></ul>
+        
+        <div id="toc">
+        </div>
+        
+        <div class="toc-footer">
+            <h3 class="translations-title"></h3> 
+            
+<ul>
+    
+        <li><a href="/en/">English</a></li>
+    
+</ul>
+
+
+        </div>
+         
+        
+        <ul class="toc-footer">
+            
+            <li><a href='#'>Registrer deg for ein utviklarnøkkel</a></li>
+            
+            <li>Dokumentasjonen er driven av <a href="https://github.com/bep/docuapi" target="_blank">DocuAPI</a></li>
+            
+            <li>API Documents by <a href="https://www.coolsms.co.kr" target="_blank">쿨에스엠에스</a></li>
+            
+        </ul>
+        
+        
+    </div>
+    <div class="page-wrapper">
+        <div class="dark-box"></div>
+        <div class="content">
+            
+    
+        
+
+<h1 id="restful-api-references">RESTful API References</h1>
+
+<p>쿨에스엠에스의 REST API 레퍼런스입니다.</p>
+
+    
+        
+
+<h1 id="api-key-관리">API Key 관리</h1>
+
+<p>REST API 호출을 통해 API Key 생성, 삭제, Secret Key 재생성 등 관리 할 수 있습니다.</p>
+
+<h2 id="api-key-생성">API Key 생성</h2>
+
+<h3 id="resource-url">Resource URL</h3>
+
+<p><code>POST https://solapi.com/credentials/createCredential</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<p>필수 입력 파라메터가 없습니다.</p>
+
+<blockquote>
+<p>Request Syntax</p>
+</blockquote>
+
+<pre><code>{}
+</code></pre>
+
+<blockquote>
+<p>Request Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl <span class="s2">&quot;https://solapi.com/credentials/createCredential&quot;</span>
+  -H <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">request</span><span class="p">(</span>
+  <span class="s2">&quot;https://solapi.com/credentials/createCredential&quot;</span><span class="p">,</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib.request</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;https://solapi.com/credentials/createCredential&#39;</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s">&#39;USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&#39;</span> <span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">the_page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>public key 가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>apiSecret</td>
+<td>-</td>
+<td>secret key 가 리턴됩니다.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Response Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;apiSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Response Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;NCSOGH0TB3PDIGV1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;apiSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;UDWMZBDEQOTXNU1K2HOUJ2ZCVELFF49B&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="정보-조회">정보 조회</h2>
+
+<p><code>POST https://solapi.com/credentials/getCredentialInfo</code></p>
+
+<h3 id="request-parameters-1">Request Parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>조회 할 API Key를 입력 합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Request Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Request Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl <span class="s2">&quot;https://solapi.com/credentials/getCredentialInfo&quot;</span>
+  -H <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">request</span><span class="p">(</span>
+  <span class="s2">&quot;https://solapi.com/credentials/getCredentialInfo&quot;</span><span class="p">,</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+  <span class="p">},</span>
+  <span class="nx">json</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;apiKey&quot;</span><span class="o">:</span> <span class="s2">&quot;NCSOGH0TB3PDIGV1&quot;</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib.request</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;https://solapi.com/credentials/getCredentialInfo&#39;</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;apiKey&#39;</span><span class="p">:</span> <span class="s">&#39;NCSOGH0TB3PDIGV1&#39;</span> <span class="p">}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s">&#39;USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&#39;</span> <span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">the_page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="response-parameters-1">Response Parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>accountId</td>
+<td>-</td>
+<td>account id가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>public key가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>apiSecret</td>
+<td>-</td>
+<td>secret key가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>credentialStatus</td>
+<td>-</td>
+<td>active 혹은 inactive가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>dateCreated</td>
+<td>-</td>
+<td>생성일시가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>userId</td>
+<td>-</td>
+<td>사용자 ID가 리턴됩니다.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Response Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;apiSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;credentialStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Response Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;NCSOGH0TB3PDIGV1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;apiSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;UDWMZBDEQOTXNU1K2HOUJ2ZCVELFF49B&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;credentialStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-07-02T13:20:22.784Z&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="secret-key-재생성">Secret Key 재생성</h2>
+
+<h3 id="resource-url-1">Resource URL</h3>
+
+<p><code>POST https://solapi.com/credentials/regenerateSecretKey</code></p>
+
+<h3 id="request-parameters-2">Request Parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>Secret Key를 재생성할 API Key 입력</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Request Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Request Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl <span class="s2">&quot;https://solapi.com/credentials/regenerateSecretKey&quot;</span>
+  -H <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">request</span><span class="p">(</span>
+  <span class="s2">&quot;https://solapi.com/credentials/regenerateSecretKey&quot;</span><span class="p">,</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+  <span class="p">},</span>
+  <span class="nx">json</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;apiKey&quot;</span><span class="o">:</span> <span class="s2">&quot;NCSOGH0TB3PDIGV1&quot;</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib.request</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;https://solapi.com/credentials/regenerateSecretKey&#39;</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s">&quot;NCSOGH0TB3PDIGV1&quot;</span> <span class="p">}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s">&#39;USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&#39;</span> <span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">the_page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="response-parameters-2">Response Parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>public key 가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>apiSecret</td>
+<td>-</td>
+<td>secret key 가 리턴됩니다.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Response Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;apiSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Response Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;NCSOGH0TB3PDIGV1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;apiSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;UDWMZBDEQOTXNU1K2HOUJ2ZCVELFF49B&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="목록-조회">목록 조회</h2>
+
+<h3 id="resource-url-2">Resource URL</h3>
+
+<p><code>POST https://solapi.com/credentials/getCredentialList</code></p>
+
+<h3 id="request-parameters-3">Request Parameters</h3>
+
+<p>필수 입력 파라메터가 없습니다.</p>
+
+<blockquote>
+<p>Request Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Request Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl <span class="s2">&quot;https://solapi.com/credentials/getCredentialList&quot;</span>
+  -H <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">request</span><span class="p">(</span>
+  <span class="s2">&quot;https://solapi.com/credentials/getCredentialList&quot;</span><span class="p">,</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib.request</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;https://solapi.com/credentials/getCredentialList&#39;</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s">&#39;USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&#39;</span> <span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">the_page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="response-parameters-3">Response Parameters</h3>
+
+<blockquote>
+<p>Response Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;credentials&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;String(apiKey)&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;apiSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;credentialStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="err">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>public key가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>apiSecret</td>
+<td>-</td>
+<td>secret key가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>credentialStatus</td>
+<td>-</td>
+<td>active 혹은 inactive가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>dateCreated</td>
+<td>-</td>
+<td>생성일시가 리턴됩니다.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Response Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;credentials&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;NCSOGH0TB3PDIGV1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;apiSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;UDWMZBDEQOTXNU1K2HOUJ2ZCVELFF49B&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;credentialStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-07-02T13:19:46.702Z&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;NCSRPB685VXTOWLA&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;apiSecret&quot;</span><span class="p">:</span> <span class="s2">&quot;YK77YTAGT1YWUORCGLAZNCSQE7JMOI8O&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;credentialStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;inactive&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-07-02T13:20:22.784Z&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="상태-업데이트">상태 업데이트</h2>
+
+<h3 id="resource-url-3">Resource URL</h3>
+
+<p><code>POST https://solapi.com/credentials/updateCredentialStatus</code></p>
+
+<h3 id="request-parameters-4">Request Parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>public key 입력</td>
+</tr>
+
+<tr>
+<td>credentialStatus</td>
+<td>-</td>
+<td>active, inactive 중에 하나 입력</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Request Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;credentialStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Request Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl <span class="s2">&quot;https://solapi.com/credentials/updateCredentialStatus&quot;</span>
+  -H <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">request</span><span class="p">(</span>
+  <span class="s2">&quot;https://solapi.com/credentials/updateCredentialStatus&quot;</span><span class="p">,</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+  <span class="p">},</span>
+  <span class="nx">json</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;apiKey&quot;</span><span class="o">:</span> <span class="s2">&quot;NCSOGH0TB3PDIGV1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;credentialStatus&quot;</span><span class="o">:</span> <span class="s2">&quot;inactive&quot;</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib.request</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;https://solapi.com/credentials/updateCredentialStatus&#39;</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s">&#39;USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&#39;</span> <span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">the_page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="response-parameters-4">Response Parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>public key 가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>apiSecret</td>
+<td>-</td>
+<td>secret key 가 리턴됩니다.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Response Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;resultCode&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Response Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;NCSOGH0TB3PDIGV1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;resultCode&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="삭제">삭제</h2>
+
+<h3 id="resource-url-4">Resource URL</h3>
+
+<p><code>POST https://solapi.com/credentials/deleteCredential</code></p>
+
+<h3 id="request-parameters-5">Request Parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>삭제할 API Key 입력</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Request Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Request Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl <span class="s2">&quot;https://solapi.com/credentials/deleteCredential&quot;</span>
+  -H <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">request</span><span class="p">(</span>
+  <span class="s2">&quot;https://solapi.com/credentials/deleteCredential&quot;</span><span class="p">,</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Authorization: USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&quot;</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib.request</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;https://solapi.com/credentials/deleteCredential&#39;</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s">&#39;USER user_id=example, date=2017-08-01 11:01:07, salt=salt=597fe0e36daeb, signature=fd96c1931e947aef14c963b67763c913&#39;</span> <span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">the_page</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="response-parameters-5">Response Parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>-</td>
+<td>public key 가 리턴됩니다.</td>
+</tr>
+
+<tr>
+<td>resultCode</td>
+<td>-</td>
+<td>결과코드가 리턴됩니다.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="resultcode-리턴가능한-값">resultCode 리턴가능한 값</h3>
+
+<p><strong>Success</strong></p>
+
+<p>성공</p>
+
+<p>HTTP Status Code: 200</p>
+
+<p><strong>ResourceNotFound</strong></p>
+
+<p>존재하지 않는 API Key</p>
+
+<p>HTTP Status Code: 404</p>
+
+<blockquote>
+<p>Response Syntax</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;resultCode&quot;</span><span class="p">:</span> <span class="s2">&quot;String&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>Response Sample</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;apiKey&quot;</span><span class="p">:</span> <span class="s2">&quot;NCSOGH0TB3PDIGV1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;resultCode&quot;</span><span class="p">:</span> <span class="s2">&quot;Success&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+    
+        
+
+<h1 id="문자발송">문자발송</h1>
+
+<p>쿨에스엠에스의 REST API Reference 내용을 담고 있습니다.</p>
+
+<p>참고<br />
+  REST는 Representational State Transfer의 약자로 API 연동 규격을 명확하게 정의되고 쉽게 구현 할 수 있습니다.   <a href="https://ko.wikipedia.org/wiki/REST" target="_blank">https://ko.wikipedia.org/wiki/REST</a></p>
+
+<p>쿨에스엠에스 SMS REST API 서버로 Request를 보내기 위해서 인증을 거쳐야 합니다. authentication 를 참고하세요.</p>
+
+<h2 id="resource-url-구성">Resource URL 구성</h2>
+
+<p><a href="https://solapi.com/" target="_blank">https://solapi.com/</a>&lt;ServiceName&gt;/&lt;Version&gt;/[&lt;ResourcePath&gt;]/&lt;Action&gt;</p>
+
+<p>ServiceName<br />
+-   SimpleMessage/sendMessages
+-   GroupMessage/index
+-   ScheduledMessage/index
+-   MessageLog/index</p>
+
+<p>Version<br />
+  - 서비스 버전</p>
+
+<p>ResourcePath<br />
+  - 필요시 특정 리소스 경로를 나타냅니다</p>
+
+<p>Action<br />
+  - 서비스 혹은 리소스의 액션을 나타냅니다</p>
+
+<h2 id="types">Types</h2>
+
+<p>이 문서에서 JSON 형식으로 구성된 Syntax를 설명할 때 사용되는 파라메터들의 형식을 아래와 같이 표기합니다.</p>
+
+<p>{Map}<br />
+Key: Value 형식의 데이터를 담을 수 있습니다.</p>
+
+<pre><code>{
+  &quot;key1&quot;: &quot;value1&quot;,
+  ...
+}
+</code></pre>
+
+<p>[Array]<br />
+ 배열 형식으로 같은 형식의 데이터를 담는 역할을 합니다.</p>
+
+<blockquote>
+<pre><code>&gt; [
+&gt;   &quot;value1&quot;,
+&gt;   &quot;value2&quot;,
+&gt;   ...
+&gt; ]
+&gt; ```
+
+“String”  
+ 문자열의 파라메터를 표현합니다.
+
+&gt; ```
+&gt; &quot;value&quot;
+&gt; ```
+
+“Date”  
+ 날짜형식의 문자열을 표현합니다.
+
+&gt; ```
+&gt; &quot;2017-06-06 16:49:02&quot;
+&gt; ```
+
+Number  
+ 숫자를 나타냅니다.
+
+&gt; ```
+&gt; 369
+&gt; ```
+
+“Boolean”  
+참, 거짓값을 문자열로 표현합니다.
+
+</code></pre>
+
+<p>&laquo;true&raquo;
+&laquo;false&raquo;
+```</p>
+</blockquote>
+
+<h2 id="차례">차례</h2>
+
+    
+        
+
+<h1 id="잔액정보">잔액정보</h1>
+
+<p>이 API는 Authentication Info를 제외한 Parameters가 필요 없습니다.</p>
+
+<p>유저의 잔액정보를 가져옵니다.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<p>필수 입력 파라메터가 없습니다.</p>
+
+<h3 id="response-parameters">Response Parameters</h3>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;member_srl&quot;</span><span class="p">:</span> <span class="s2">&quot;382492&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;testsy1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cash&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;point&quot;</span><span class="p">:</span> <span class="s2">&quot;98843&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>member_srl</td>
+<td>-</td>
+<td>사용자 번호(AccountId와 동일)</td>
+</tr>
+
+<tr>
+<td>user_id</td>
+<td>-</td>
+<td>사용자 아이디</td>
+</tr>
+
+<tr>
+<td>cash</td>
+<td>-</td>
+<td>남은 캐쉬</td>
+</tr>
+
+<tr>
+<td>point</td>
+<td>-</td>
+<td>남은 포인트</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="error-처리">Error 처리</h3>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;errorMessage&quot;</span><span class="p">:</span> <span class="s2">&quot;parameter is empty&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Http Status Code가 200일 경우 성공 아니라면 &lsquo;errorMessage&rsquo;값을 확인한다.</p>
+
+    
+
+        </div>
+        <div class="dark-box">
+            
+            <div class="lang-selector">
+                
+                <a href="#" data-language-name="bash">CURL</a>
+                
+                <a href="#" data-language-name="javascript">Javascript</a>
+                
+                <a href="#" data-language-name="python">Python</a>
+                
+                <a href="#" data-language-name="php">PHP</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
